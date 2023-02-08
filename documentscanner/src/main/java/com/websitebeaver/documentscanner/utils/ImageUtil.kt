@@ -101,7 +101,10 @@ class ImageUtil {
         return croppedBitmap
     }
 
-    fun crop(bitmap: Bitmap, corners: Quad): Bitmap {
+    fun crop(bitmap: Bitmap, listOfCorners: List<Point>): Bitmap {
+
+        val (topLeft, topRight, bottomLeft, bottomRight) = listOfCorners
+        val corners = Quad(topLeft, topRight, bottomRight, bottomLeft)
 
         val image = Mat(bitmap.width, bitmap.height, CvType.CV_8UC1)
 
